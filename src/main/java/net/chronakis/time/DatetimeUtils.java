@@ -54,7 +54,6 @@ public class DatetimeUtils {
 	 * @param date2 The end date
 	 * @param intervalUnit The unit that the return value will be
 	 * 
-	 * @return 
 	 */
 	public static long timeBetween(Date date1, Date date2, IntervalUnit intervalUnit) {
 		Calendar cal1 = dateToGregorianCalendar(date1);
@@ -87,7 +86,6 @@ public class DatetimeUtils {
 	 * @param date1
 	 * @param date2
 	 * @param intervalUnit
-	 * @return
 	 */
 	public static long timeBetween(Calendar date1, Calendar date2, IntervalUnit intervalUnit) {
 		// To follow joda's convention years, months, weeks & days don't follow daylight savings
@@ -180,11 +178,12 @@ public class DatetimeUtils {
 	/**
 	 * Returns true if date1 is before date2. System time zone is used
 	 * <p>
-	 * {@link java.util.Calendar#before(Object))}
+	 * {@link java.util.Calendar#before(Object)}
 	 * 
 	 * @param date1
 	 * @param date2
-	 * @return
+	 * 
+	 * @return True, if date1 is before date2
 	 */
 	public static boolean before (Date date1, Date date2) {
 		return dateToGregorianCalendar(date1).before(dateToGregorianCalendar(date2));
@@ -193,11 +192,12 @@ public class DatetimeUtils {
 	/**
 	 * Returns true if date1 is after date2. System time zone is used
 	 * <p>
-	 * {@link java.util.Calendar#after(Object))}
+	 * {@link Calendar#after(Object)}
 	 * 
 	 * @param date1
 	 * @param date2
-	 * @return
+	 * 
+	 * @return true if date1 is after date2. System time zone is used
 	 */
 	public static boolean after (Date date1, Date date2) {
 		return dateToGregorianCalendar(date1).after(dateToGregorianCalendar(date2));
@@ -206,11 +206,13 @@ public class DatetimeUtils {
 	/**
 	 * compareTo version with dates. System time zone is used
 	 * <p>
-	 * {@link java.util.Calendar#compareTo(Calendar))}
+	 * {@link java.util.Calendar#compareTo(Calendar)}
 	 * 
 	 * @param date1
 	 * @param date2
-	 * @return
+	 * 
+	 * @return	Less than zero, when date1 is before date2, zero when they are the same
+	 * 			and larger than zero when date 2 is after date1
 	 */
 	public static int compare (Date date1, Date date2) {
 		return dateToGregorianCalendar(date1).compareTo(dateToGregorianCalendar(date2));
@@ -225,7 +227,6 @@ public class DatetimeUtils {
 	 *   {@code result = truncateTime(datetime.clone())}
 	 *   
 	 * @param datetime
-	 * @return
 	 */
 	public static Date truncateTime(Date datetime) {
 		Calendar cal = truncateTime(dateToGregorianCalendar(datetime));
@@ -243,7 +244,6 @@ public class DatetimeUtils {
 	 *   {@code result = truncateTime(calendar.clone())}
 	 * 
 	 * @param calendar
-	 * @return
 	 */
 	public static Calendar truncateTime(Calendar calendar) {
 		calendar.set(Calendar.HOUR_OF_DAY, 0);

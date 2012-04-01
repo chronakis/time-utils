@@ -8,9 +8,9 @@
   </parent>
 
   <groupId>net.chronakis.time</groupId>
-  <artifactId>timeutils</artifactId>
+  <artifactId>time-utils</artifactId>
   <version>1.0-SNAPSHOT</version>
-  <name>timeutils</name>
+  <name>time-utils</name>
   <description>
 	Library temporal operations in java
   </description>
