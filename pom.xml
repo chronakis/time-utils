@@ -11,10 +11,8 @@
   <artifactId>time-utils</artifactId>
   <version>1.0-SNAPSHOT</version>
   <name>time-utils</name>
-  <description>
-	Library temporal operations in java
-  </description>
-  <url>https://github.com/chronakis/timeutils</url>
+  <description>Utility library for calculating date/time differences in java</description>
+  <url>https://github.com/chronakis/time-utils</url>
 
   <licenses>
     <license>
@@ -39,11 +37,50 @@
   </properties> 
   
   <scm>
-    <connection>scm:git:git@github.com:chronakis/tiles-dynamic.git</connection> 
-     <developerConnection>scm:git:git@github.com:chronakis/tiles-dynamic.git</developerConnection> 
-    <url>https://github.com/chronakis/tiles-dynamic/tree/master</url>
+    <connection>scm:git:git@github.com:chronakis/time-utils.git</connection> 
+     <developerConnection>scm:git:git@github.com:chronakis/time-utils.git</developerConnection> 
+    <url>https://github.com/chronakis/time-utils/tree/master</url>
   </scm>
 
+  <profiles>
+    <!--
+    	Conditionally sign the release artifacts
+    	To activate this profile, invoke maven with the
+    	-DperformRelease=true option, e.g.
+    	> mvn -DperformRelease=true install
+     -->
+    <profile>
+       <id>release-sign-artifacts</id>
+       <activation>
+          <property>
+             <name>performRelease</name>
+             <value>true</value>
+          </property>
+        </activation>
+        <build>
+          <plugins>
+		      <plugin>
+		        <groupId>org.apache.maven.plugins</groupId>
+		        <artifactId>maven-gpg-plugin</artifactId>
+		        <version>1.4</version>
+		        <configuration>
+		        	<keyname>54ED5413</keyname>
+		        </configuration>
+		        <executions>
+		          <execution>
+		            <id>sign-artifacts</id>
+		            <phase>verify</phase>
+		            <goals>
+		              <goal>sign</goal>
+		            </goals>
+		          </execution>
+		        </executions>
+		      </plugin>
+          </plugins>
+        </build>
+    </profile>
+  </profiles>
+	
   <build>
   <plugins>
   
@@ -90,26 +127,6 @@
         	</execution>
         </executions>
       </plugin>
-
-
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-gpg-plugin</artifactId>
-        <version>1.4</version>
-        <configuration>
-        	<keyname>54ED5413</keyname>
-        </configuration>
-        <executions>
-          <execution>
-            <id>sign-artifacts</id>
-            <phase>verify</phase>
-            <goals>
-              <goal>sign</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-	  
 	  
 	 </plugins>
   </build>
